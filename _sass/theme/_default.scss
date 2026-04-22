@@ -1,45 +1,67 @@
 /* ==========================================================================
-   DEFAULT THEME
+   DEFAULT THEME - Mify Style
    ========================================================================== */
 
-/* Color codes used for the theme */
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-$lighter-gray               : mix(#fff, $gray, 90%);
+/* Mify-inspired color palette */
+$bg-base                    : #f5f4ed;
+$bg-surface                 : #faf9f5;
+$bg-elevated                : #fff;
+$bg-hover                   : #f0eee6;
+$accent                     : #c96442;
+$accent-hover               : #b85538;
+$accent-subtle              : rgba(201, 100, 66, 0.1);
+$text-primary               : #141413;
+$text-secondary             : #5e5d59;
+$text-tertiary              : #87867f;
+$border-color               : #f0eee6;
+$border-hover               : #d1cfc5;
+$border-prominent           : #e8e6dc;
+
+/* Legacy color codes (keeping for compatibility) */
+$gray                       : #87867f;
+$dark-gray                  : #5e5d59;
+$darker-gray                : #141413;
+$light-gray                 : #a8a7a1;
+$lighter-gray               : #e8e6dc;
 
 /* Color codes used for the site */
 $danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
+$info-color                 : #3d6b9e;
+$notice-color               : #87867f;
 $success-color              : #62c462;
 $warning-color              : #f89406;
 
 /* Other basic settings for the template */
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
-$global-transition          : all 0.2s ease-in-out;
-$masthead-height            : 70px;
+$border-radius              : 8px;
+$box-shadow                 : 0 1px 3px rgba(20, 20, 19, 0.08);
+$global-transition          : all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+$masthead-height            : 60px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
-$sidebar-link-max-width     : 250px;
+$sidebar-link-max-width     : 280px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Default light theme for the site */
+/* Mify-style light theme for the site */
 :root {
     --global-base-color                 : #{$gray};
-    --global-bg-color                   : #fff;
-    --global-border-color               : #{$lighter-gray};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #2f7f93;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+    --global-bg-color                   : #{$bg-base};
+    --global-bg-surface                 : #{$bg-surface};
+    --global-bg-elevated                : #{$bg-elevated};
+    --global-bg-hover                   : #{$bg-hover};
+    --global-border-color               : #{$border-color};
+    --global-border-prominent           : #{$border-prominent};
+    --global-code-background-color      : #{$bg-surface};
+    --global-code-text-color            : #8b5e48;
+    --global-fig-caption-color          : #{$text-secondary};
+    --global-link-color                 : #{$accent};
+    --global-link-color-hover           : #{$accent-hover};
+    --global-link-color-visited         : #{$accent};
+    --global-masthead-link-color        : #{$text-primary};
+    --global-masthead-link-color-hover  : #{$accent};
+    --global-text-color                 : #{$text-primary};
+    --global-text-color-light           : #{$text-tertiary};
+    --global-thead-color                : #{$border-prominent};
+    --global-accent                     : #{$accent};
+    --global-accent-hover               : #{$accent-hover};
+    --global-accent-subtle              : #{$accent-subtle};
 }

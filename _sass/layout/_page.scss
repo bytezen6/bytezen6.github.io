@@ -1,13 +1,13 @@
 /* ==========================================================================
-   SINGLE PAGE/POST
+   SINGLE PAGE/POST - Mify Style
    ========================================================================== */
 
 #main {
   @include container;
   @include clearfix;
   margin-top: 2em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
   animation: intro 0.3s both;
   animation-delay: 0.35s;
 
@@ -36,7 +36,11 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  line-height: 1.2;
+  font-family: $font-display;
+  font-weight: 500;
+  color: var(--global-text-color);
+  letter-spacing: -0.02em;
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -46,17 +50,29 @@
 .page__lead {
   font-family: $global-font-family;
   font-size: $type-size-4;
+  color: var(--global-text-color-light);
+  line-height: 1.6;
 }
 
 .page__content {
-
   h2 {
     padding-bottom: 0.5em;
-    border-bottom: 1px solid var(--global-border-color);
+    border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
+    font-family: $font-display;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  h3, h4, h5, h6 {
+    font-family: $font-display;
+    font-weight: 500;
+    color: var(--global-text-color);
   }
 
   p, li, dl {
     font-size: 1em;
+    color: var(--global-text-color);
+    line-height: 1.7;
   }
 
   /* paragraph indents */
@@ -73,13 +89,16 @@
   }
 
   a {
-    text-decoration: underline;
+    color: var(--global-accent, #c96442);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.15s ease;
 
     &:hover {
-      text-decoration: underline;
+      border-bottom-color: var(--global-accent, #c96442);
 
       img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
+        box-shadow: 0 4px 20px rgba(20, 20, 19, 0.15);
       }
     }
   }
@@ -87,13 +106,15 @@
   dt {
     margin-top: 1em;
     font-family: $sans-serif;
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--global-text-color);
   }
 
   dd {
     margin-left: 1em;
     font-family: $sans-serif;
     font-size: $type-size-6;
+    color: var(--global-text-color-light);
   }
 
   .small {
@@ -104,6 +125,21 @@
   blockquote + .small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
+  }
+}
+
+/* Mify-style cards for content sections */
+.content-card {
+  background: var(--global-bg-surface, #faf9f5);
+  border: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-radius: $border-radius;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--global-border-hover, #d1cfc5);
+    box-shadow: 0 4px 12px rgba(20, 20, 19, 0.06);
   }
 }
 
@@ -124,6 +160,7 @@
     background-position: center;
     animation: intro 0.3s both;
     animation-delay: 0.25s;
+    border-radius: $border-radius;
 
     a {
       color: #fff;
@@ -164,6 +201,7 @@
   width: 100%;
   height: auto;
   -ms-interpolation-mode: bicubic;
+  border-radius: $border-radius;
 }
 
 .page__hero-caption {
@@ -171,18 +209,17 @@
   bottom: 0;
   right: 0;
   margin: 0 auto;
-  padding: 2px 5px;
+  padding: 4px 10px;
   color: #fff;
   font-family: $caption-font-family;
   font-size: $type-size-7;
-  background: #000;
+  background: rgba(20, 20, 19, 0.7);
   text-align: right;
   z-index: 5;
-  opacity: 0.5;
   border-radius: $border-radius 0 $border-radius 0;
 
   @include breakpoint($large) {
-    padding: 5px 10px;
+    padding: 6px 12px;
   }
 
   a {
@@ -192,13 +229,13 @@
 }
 
 /*
-   Social sharing
+   Social sharing - Mify Style
    ========================================================================== */
 
 .page__share {
   margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid var(--global-border-color);
+  padding-top: 1.5em;
+  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
 
   @include breakpoint(max-width $small) {
     .btn span {
@@ -216,13 +253,15 @@
 
 .page__share-title {
   margin-bottom: 10px;
-  font-size: $type-size-6;
+  font-size: $type-size-7;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--global-text-color-light);
 }
 
 
 /*
-   Page meta
+   Page meta - Mify Style
    ========================================================================== */
 
 .page__meta {
@@ -237,18 +276,25 @@
 
   a {
     color: inherit;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--global-accent, #c96442);
+    }
   }
 }
 
 .page__meta-title {
   margin-bottom: 10px;
-  font-size: $type-size-6;
+  font-size: $type-size-7;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--global-text-color-light);
 }
 
 
 /*
-   Page taxonomy
+   Page taxonomy - Mify Style
    ========================================================================== */
 
 .page__taxonomy {
@@ -258,6 +304,7 @@
 
   strong {
     margin-right: 10px;
+    color: var(--global-text-color-light);
   }
 }
 
@@ -265,20 +312,27 @@
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 8px;
-  padding: 5px 10px;
+  padding: 4px 12px;
   text-decoration: none;
-  border: 1px solid var(--global-border-color);
-  border-radius: $border-radius;
+  font-size: $type-size-7;
+  font-weight: 500;
+  color: var(--global-text-color-light);
+  background: var(--global-bg-surface, #faf9f5);
+  border: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-radius: 999px;
+  transition: all 0.15s ease;
 
   &:hover {
     text-decoration: none;
-    color: var(--global-link-color-hover);
+    color: var(--global-accent, #c96442);
+    background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
+    border-color: var(--global-accent, #c96442);
   }
 }
 
 
 /*
-   Comments
+   Comments - Mify Style
    ========================================================================== */
 
 .page__comments {
@@ -289,14 +343,18 @@
   margin-top: 2rem;
   margin-bottom: 10px;
   padding-top: 2rem;
-  font-size: $type-size-6;
-  border-top: 1px solid var(--global-border-color);
+  font-size: $type-size-7;
+  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--global-text-color-light);
 }
 
 .page__comments-form {
-  padding: 1em;
-  background: var(--global-border-color);
+  padding: 1.25em;
+  background: var(--global-bg-surface, #faf9f5);
+  border: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-radius: $border-radius;
   transition: $global-transition;
 
   &.disabled {
@@ -316,9 +374,13 @@
 .comment {
   @include clearfix();
   margin: 1em 0;
+  padding: 1em;
+  background: var(--global-bg-surface, #faf9f5);
+  border-radius: $border-radius;
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--global-border-color);
+    border-bottom: none;
+    margin-bottom: 0.75em;
   }
 }
 
@@ -341,8 +403,9 @@
   @include breakpoint($large) {
     width: 80px;
     height: 80px;
-    padding: 5px;
-    border: 1px solid var(--global-border-color);
+    padding: 0;
+    border: 2px solid var(--global-bg-elevated, #fff);
+    box-shadow: 0 2px 8px rgba(20, 20, 19, 0.08);
   }
 }
 
@@ -357,9 +420,16 @@
 
 .comment__author {
   margin: 0;
+  font-weight: 600;
+  color: var(--global-text-color);
 
   a {
     text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: var(--global-accent, #c96442);
+    }
   }
 }
 
@@ -374,13 +444,13 @@
 
 
 /*
-   Related
+   Related - Mify Style
    ========================================================================== */
 
 .page__related {
   margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid var(--global-border-color);
+  padding-top: 1.5em;
+  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
   @include clearfix();
   float: left;
 
@@ -391,11 +461,18 @@
   a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--global-accent, #c96442);
+    }
   }
 }
 
 .page__related-title {
   margin-bottom: 10px;
-  font-size: $type-size-6;
+  font-size: $type-size-7;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--global-text-color-light);
 }

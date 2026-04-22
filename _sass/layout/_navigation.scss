@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NAVIGATION
+   NAVIGATION - Mify Style
    ========================================================================== */
 
 /*
@@ -32,6 +32,9 @@
     padding: 0;
     list-style: none;
     font-size: $type-size-6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
 
     @include breakpoint($large) {
       @include span(10 of 12 last);
@@ -43,11 +46,31 @@
   }
 
   li {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    color: var(--global-text-color-light);
+
+    &:not(:last-child)::after {
+      content: "/";
+      margin: 0 0.5rem;
+      color: var(--global-text-color-light);
+      opacity: 0.5;
+    }
+
+    a {
+      color: var(--global-text-color-light);
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: var(--global-accent, #c96442);
+      }
+    }
   }
 
   .current {
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--global-text-color);
   }
 }
 
@@ -67,76 +90,74 @@
     padding: 0;
     list-style-type: none;
     font-family: $sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
   }
 
   li {
     display: block;
-    float: left;
-    margin-left: -1px;
 
     a {
+      display: block;
       margin-bottom: 0.25em;
       padding: 0.5em 1em;
       font-family: $sans-serif;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: $type-size-6;
+      font-weight: 500;
       line-height: 1.5;
       text-align: center;
       text-decoration: none;
       color: var(--global-text-color-light);
-      border: 1px solid var(var(--global-border-color));
-      border-radius: 0;
+      background: var(--global-bg-surface, #faf9f5);
+      border: 1px solid var(--global-border-prominent, #e8e6dc);
+      border-radius: $border-radius;
+      transition: all 0.15s ease;
 
       &:hover {
-        color: var(--global-link-color-hover);
+        color: var(--global-accent, #c96442);
+        border-color: var(--global-border-hover, #d1cfc5);
+        background: var(--global-bg-hover, #f0eee6);
       }
 
       &.current {
-        color: #fff;
-        background: var(--global-base-color);
+        color: #faf9f5;
+        background: var(--global-accent, #c96442);
+        border-color: var(--global-accent, #c96442);
       }
 
       &.disabled {
         color: var(--global-text-color-light);
+        opacity: 0.5;
         pointer-events: none;
         cursor: not-allowed;
-      }
-    }
-
-    &:first-child {
-      margin-left: 0;
-
-      a {
-        border-top-left-radius: $border-radius;
-        border-bottom-left-radius: $border-radius;
-      }
-    }
-
-    &:last-child {
-      a {
-        border-top-right-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
       }
     }
   }
 
   /* next/previous buttons */
   &--pager {
-    display: block;
-    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1em 1.5em;
     float: left;
     width: 50%;
     font-family: $sans-serif;
     font-size: $type-size-5;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
     text-decoration: none;
     color: var(--global-text-color-light);
-    border: 1px solid var(var(--global-border-color));
+    background: var(--global-bg-surface, #faf9f5);
+    border: 1px solid var(--global-border-prominent, #e8e6dc);
     border-radius: $border-radius;
+    transition: all 0.15s ease;
 
     &:hover {
-      color: var(--global-link-color-hover);
+      color: var(--global-accent, #c96442);
+      border-color: var(--global-border-hover, #d1cfc5);
     }
 
     &:first-child {
@@ -152,6 +173,7 @@
 
     &.disabled {
       color: var(--global-text-color-light);
+      opacity: 0.5;
       pointer-events: none;
       cursor: not-allowed;
     }
@@ -164,28 +186,31 @@
 .page__comments + .pagination {
   margin-top: 2em;
   padding-top: 2em;
-  border-top: 1px solid var(--global-border-color);
+  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
 }
 
 
 /*
-   Priority plus navigation
+   Priority plus navigation - Mify Style
    ========================================================================== */
 
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: var(--global-bg-color);
+  background: transparent;
 
   a {
     display: block;
-    margin: 0 1rem;
+    margin: 0 0.75rem;
     padding: 0.5rem 0;
-    color: var(--global-masthead-link-color);
+    color: var(--global-text-color-light, #87867f);
     text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
 
     &:hover {
-      color: var(--global-masthead-link-color-hover);
+      color: var(--global-accent, #c96442);
     }
   }
 
@@ -193,13 +218,20 @@
     position: absolute;
     height: 2.5rem;
     right: 0;
-    padding: 0 0.5rem;
-    border: 0;
+    padding: 0 0.75rem;
+    border: 1px solid var(--global-border-prominent, #e8e6dc);
+    border-radius: $border-radius;
     outline: none;
-    background-color: var(--global-base-color);
-    color: #fff;
+    background-color: var(--global-bg-surface, #faf9f5);
+    color: var(--global-text-color-light);
     cursor: pointer;
     z-index: 100;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--global-bg-hover, #f0eee6);
+      color: var(--global-text-color);
+    }
   }
 
   .visible-links {
@@ -210,11 +242,18 @@
       vertical-align: middle;
 
       &:first-child {
-        font-weight: bold;
+        font-weight: 500;
         text-wrap: wrap;
 
         a {
           margin-left: 0;
+          font-family: $font-display;
+          font-size: 1.125rem;
+          color: var(--global-text-color);
+
+          &:hover {
+            color: var(--global-accent, #c96442);
+          }
         }
       }
 
@@ -233,20 +272,20 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 4px;
-        background: var(--global-border-color);
+        height: 2px;
+        background: var(--global-accent, #c96442);
         width: 100%;
         -webkit-transition: $global-transition;
         transition: $global-transition;
         -webkit-transform: scaleX(0);
             -ms-transform: scaleX(0);
-                transform: scaleX(0); /* hide*/
+                transform: scaleX(0);
       }
 
       &:hover:before {
         -webkit-transform: scaleX(1);
             -ms-transform: scaleX(1);
-                transform: scaleX(1); /* reveal*/
+                transform: scaleX(1);
       }
     }
   }
@@ -256,20 +295,21 @@
     top: 100%;
     right: 0;
     margin-top: 15px;
-    padding: 5px;
-    border: 1px solid var(--global-border-color);
+    padding: 8px;
+    border: 1px solid var(--global-border-prominent, #e8e6dc);
     border-radius: $border-radius;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(#000, 0.25);
+    background: var(--global-bg-elevated, #fff);
+    box-shadow: 0 4px 20px rgba(20, 20, 19, 0.1);
 
     a {
       margin: 0;
-      padding: 10px 20px;
-      font-size: $type-size-5;
+      padding: 8px 16px;
+      font-size: $type-size-6;
+      border-radius: 6px;
 
       &:hover {
-        color: var(--global-masthead-link-color-hover);
-        background: var(--global-border-color);
+        color: var(--global-accent, #c96442);
+        background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
       }
     }
 
@@ -281,7 +321,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: var(--global-border-color) transparent;
+      border-color: var(--global-border-prominent, #e8e6dc) transparent;
       display: block;
       z-index: 0;
     }
@@ -294,14 +334,14 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: #fff transparent;
+      border-color: var(--global-bg-elevated, #fff) transparent;
       display: block;
       z-index: 1;
     }
 
     li {
       display: block;
-      border-bottom: 1px solid var(--global-border-color);
+      border-bottom: none;
 
       &:last-child {
         border-bottom: none;
@@ -312,11 +352,11 @@
 
 
 /*
-   Navigation list
+   Navigation list - Mify Style
    ========================================================================== */
 
 .nav__list {
-  font-size: 1.25rem;
+  font-size: 1rem;
 
   ul {
     margin-bottom: 1em;
@@ -324,69 +364,78 @@
 
   a {
     display: block;
-    padding: 0.125em 0;
-    color: inherit;
+    padding: 0.375em 0.75em;
+    color: var(--global-text-color-light);
+    border-radius: 6px;
+    transition: all 0.15s ease;
 
     &:hover {
-      text-decoration: underline;
+      color: var(--global-accent, #c96442);
+      background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
+      text-decoration: none;
     }
   }
 
   .active {
-    margin-left: -0.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    color: #fff;
-    font-weight: bold;
-    background: var(--global-base-color);
+    margin-left: 0;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    color: var(--global-accent, #c96442);
+    font-weight: 600;
+    background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
     border-radius: $border-radius;
 
     &:hover {
-      color: #fff;
+      color: var(--global-accent, #c96442);
     }
   }
 }
 
 .nav__title {
   margin: 0;
-  padding: 0.5rem 1rem;
-  font-family: $sans-serif-narrow;
+  padding: 0.5rem 0.75rem;
+  font-family: $font-display;
   font-size: $type-size-5;
-  font-weight: bold;
+  font-weight: 500;
+  color: var(--global-text-color);
 }
 
 .nav__sub-title {
   display: block;
   margin: 0.5rem 0;
   padding: 0.5rem 0;
-  font-family: $sans-serif-narrow;
-  font-size: $type-size-6;
-  font-weight: bold;
+  font-family: $sans-serif;
+  font-size: $type-size-7;
+  font-weight: 600;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--global-border-color);
+  letter-spacing: 0.1em;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
 }
 
 
 /*
-   Table of contents navigation
+   Table of contents navigation - Mify Style
    ========================================================================== */
 
 .toc {
-  font-family: $sans-serif-narrow;
+  font-family: $sans-serif;
   color: var(--global-text-color-light);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background-color: #fff;
-  border: 1px solid var(--global-border-color);
+  background-color: var(--global-bg-surface, #faf9f5);
+  border: 1px solid var(--global-border-prominent, #e8e6dc);
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  box-shadow: none;
 
   .nav__title {
-    color: #fff;
-    font-size: $type-size-6;
-    background: var(--global-base-color);
+    color: var(--global-text-color);
+    font-size: $type-size-7;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--global-bg-hover, #f0eee6);
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+    border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
   }
 }
 
@@ -395,21 +444,22 @@
   padding: 0;
   width: 100%;
   list-style: none;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 
   a {
     display: block;
     padding: 0.5rem 1rem;
     color: var(--global-text-color-light);
     font-size: $type-size-7;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.5;
-    border-bottom: 1px solid var(--global-border-color);
+    border-bottom: 1px solid var(--global-border-color, #f0eee6);
     text-decoration-line: none !important;
+    transition: all 0.15s ease;
 
     &:hover {
-      color: #000;
-      background: var(--global-link-color-hover);
+      color: var(--global-accent, #c96442);
+      background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
     }
   }
 

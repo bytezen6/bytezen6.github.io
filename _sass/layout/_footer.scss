@@ -1,10 +1,10 @@
 /* ==========================================================================
-   FOOTER
+   FOOTER - Mify Style
    ========================================================================== */
 
 .page__footer {
   @include clearfix;
-  background-color: var(--global-bg-color);
+  background-color: var(--global-bg-surface, #faf9f5);
   color: var(--global-text-color-light);
 
   float: left;
@@ -25,15 +25,15 @@
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
           animation-delay: 0.45s;
-  border-top: 1px solid var(var(--global-border-color));
+  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
 
   footer {
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em;
+    margin-top: 1.5em;
     max-width: 100%;
-    padding: 0 1em 1em;
+    padding: 0 clamp(1rem, 3vw, 2rem) 1.5em;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -41,11 +41,13 @@
   }
 
   a {
-    color: inherit;
+    color: var(--global-text-color-light);
     text-decoration: none;
+    transition: color 0.15s ease;
 
     &:hover {
-      text-decoration: underline;
+      color: var(--global-accent, #c96442);
+      text-decoration: none;
     }
   }
 
@@ -54,12 +56,21 @@
   .far,
   .fal {
     color: var(--global-text-color-light);
+    transition: color 0.15s ease;
+  }
+
+  a:hover .fas,
+  a:hover .fab,
+  a:hover .far,
+  a:hover .fal {
+    color: var(--global-accent, #c96442);
   }
 }
 
 .page__footer-copyright {
   font-family: $global-font-family;
   font-size: $type-size-7;
+  color: var(--global-text-color-light);
 }
 
 .page__footer-follow {
@@ -67,25 +78,39 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   li {
     display: inline-block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-family: $sans-serif-narrow;
-    font-size: $type-size-6;
+    padding: 4px 0;
+    font-family: $sans-serif;
+    font-size: $type-size-7;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   li + li:before {
     content: "";
-    padding-right: 5px;
+    padding-right: 0;
   }
 
   a {
-    padding-right: 10px;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 4px 10px;
+    font-weight: 500;
+    background: var(--global-bg-hover, #f0eee6);
+    border-radius: 6px;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
+      color: var(--global-accent, #c96442);
+    }
   }
 
   .social-icons {

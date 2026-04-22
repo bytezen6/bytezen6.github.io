@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Forms
+   Forms - Mify Style
    ========================================================================== */
 
 form {
@@ -14,17 +14,18 @@ form {
   legend {
     display: block;
     width: 100%;
-    margin-bottom: 5px * 2;
-    *margin-left: -7px;
+    margin-bottom: 10px;
     padding: 0;
     color: var(--global-text-color);
+    font-family: $font-display;
+    font-weight: 500;
     border: 0;
-    border-bottom: 1px solid mix(#fff, #000, 80%);
+    border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
     white-space: normal;
   }
 
   p {
-    margin-bottom: 5px / 2;
+    margin-bottom: 2.5px;
   }
 
   ul {
@@ -57,12 +58,15 @@ textarea {
 
 label {
   display: block;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
   color: var(--global-text-color);
+  font-size: $type-size-6;
+  font-weight: 500;
   cursor: pointer;
 
   small {
-    font-size: $type-size-6;
+    font-size: $type-size-7;
+    color: var(--global-text-color-light);
   }
 
   input,
@@ -77,16 +81,22 @@ textarea,
 select {
   display: inline-block;
   width: 100%;
-  padding: 0.25em;
-  margin-bottom: 0.5em;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75em;
   color: var(--global-text-color);
-  background-color: #fff;
-  border: 1px solid mix(#fff, #000, 80%);
+  background-color: var(--global-bg-surface, #faf9f5);
+  border: 1px solid var(--global-border-prominent, #e8e6dc);
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  box-shadow: none;
+  font-size: $type-size-6;
+  transition: all 0.2s ease;
 
   &:hover {
-    border-color: var(--global-base-color);
+    border-color: var(--global-border-hover, #d1cfc5);
+  }
+
+  &::placeholder {
+    color: var(--global-text-color-light);
   }
 }
 
@@ -118,6 +128,7 @@ input[type="radio"] {
   padding: 0;
   *width: 13px;
   *height: 13px;
+  accent-color: var(--global-accent, #c96442);
 }
 
 input[type="image"] {
@@ -151,7 +162,7 @@ input[type="file"] {
 
 select {
   width: auto;
-  background-color: #fff;
+  background-color: var(--global-bg-surface, #faf9f5);
 }
 
 select[multiple],
@@ -164,6 +175,7 @@ textarea {
   height: auto;
   overflow: auto;
   vertical-align: top;
+  min-height: 100px;
 }
 
 input[type="hidden"] {
@@ -216,20 +228,21 @@ textarea[readonly] {
 
 
 /*
-   Focus & active state
+   Focus & active state - Mify Style
    ========================================================================== */
 
 input:focus,
-textarea:focus {
-  border-color: var(--global-border-color);
+textarea:focus,
+select:focus {
+  border-color: var(--global-border-hover, #d1cfc5);
+  background-color: var(--global-bg-elevated, #fff);
   outline: 0;
-  outline: thin dotted \9;
+  box-shadow: 0 0 0 3px var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
 }
 
 input[type="file"]:focus,
 input[type="radio"]:focus,
-input[type="checkbox"]:focus,
-select:focus {
+input[type="checkbox"]:focus {
   box-shadow: none;
 }
 
@@ -240,13 +253,14 @@ select:focus {
 
 .help-block,
 .help-inline {
-  color: $info-color;
+  color: var(--global-text-color-light);
+  font-size: $type-size-7;
 }
 
 .help-block {
   display: block;
   margin-bottom: 1em;
-  line-height: 1em;
+  line-height: 1.4em;
 }
 
 .help-inline {
@@ -287,7 +301,7 @@ select:focus {
 
 
 /*
-   .form-search
+   .form-search - Mify Style
    ========================================================================== */
 
 .form-search input,
@@ -298,10 +312,18 @@ select:focus {
 }
 
 .form-search .search-query {
-  padding-left: 14px;
-  padding-right: 14px;
+  padding: 0.5rem 1rem 0.5rem 2.25rem;
   margin-bottom: 0;
-  border-radius: 14px;
+  border-radius: 999px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2387867f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
+  background-size: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus {
+    width: 300px;
+  }
 }
 
 .form-search label {
@@ -342,7 +364,7 @@ select:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(250, 249, 245, 0.8);
   z-index: 10;
 }
 
@@ -357,7 +379,7 @@ select:focus {
 
 
 /*
-   Google search form
+   Google search form - Mify Style
    ========================================================================== */
 
 #goog-fixurl {
@@ -375,17 +397,18 @@ select:focus {
   width: auto;
   margin-right: 10px;
   margin-bottom: 20px;
-  padding: 8px 20px;
+  padding: 0.5rem 1rem;
   display: inline-block;
   font-size: $type-size-6;
-  background-color: #fff;
-  color: #000;
-  border-width: 2px !important;
+  background-color: var(--global-bg-surface, #faf9f5);
+  color: var(--global-text-color);
+  border-width: 1px !important;
   border-style: solid !important;
-  border-color: lighten(#000,50);
+  border-color: var(--global-border-prominent, #e8e6dc);
   border-radius: $border-radius;
 }
 
 #goog-wm-sb {
   @extend .btn;
+  @extend .btn--primary;
 }

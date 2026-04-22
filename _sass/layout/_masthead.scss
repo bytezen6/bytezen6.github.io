@@ -1,11 +1,13 @@
 /* ==========================================================================
-   MASTHEAD
+   MASTHEAD - Mify Style
    ========================================================================== */
 
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
-  border-bottom: 1px solid var(--global-border-color);
+  background: rgba(245, 244, 237, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
   height: $masthead-height;
   top: 0;
   width: 100%;
@@ -14,13 +16,16 @@
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.15s;
           animation-delay: 0.15s;
-  z-index: 20;
+  z-index: 50;
 
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 1em 1em 1em;
+    padding: 0.875rem clamp(1rem, 3vw, 3rem);
     font-family: $sans-serif-narrow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -32,28 +37,64 @@
 
     a {
       text-decoration: none;
+      transition: color 0.15s ease;
     }
   }
 }
 
-.masthead__menu {
+.site-title {
+  font-family: $header-font-family;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--global-text-color);
 
+  &:hover {
+    color: var(--global-accent, #c96442);
+  }
+}
+
+.masthead__menu {
   ul {
     margin: 0;
     padding: 0;
     clear: both;
     list-style-type: none;
+    display: flex;
+    gap: 0.5rem;
   }
 }
 
 .masthead__menu-item {
-  background-color: var(--global-bg-color);
+  background-color: transparent;
   display: block;
   list-style-type: none;
   white-space: nowrap;
+
+  a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: var(--global-text-color-light, #87867f);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: $border-radius;
+    transition: all 0.15s ease;
+
+    &:hover {
+      color: var(--global-text-color);
+      background: var(--global-bg-hover, #f0eee6);
+    }
+  }
 
   &--lg {
     padding-right: 2em;
     font-weight: 700;
   }
+}
+
+/* Active navigation item */
+.masthead__menu-item a.active,
+.masthead__menu-item a[aria-current="page"] {
+  color: var(--global-accent, #c96442);
+  background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
 }
