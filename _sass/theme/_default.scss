@@ -65,3 +65,54 @@ $sidebar-screen-min-width   : 1024px;
     --global-accent-hover               : #{$accent-hover};
     --global-accent-subtle              : #{$accent-subtle};
 }
+
+/* Dark mode */
+[data-theme="dark"] {
+    --global-base-color                 : #3a3a3a;
+    --global-bg-color                   : #1a1a1a;
+    --global-bg-surface                 : #222222;
+    --global-bg-elevated                : #2a2a2a;
+    --global-bg-hover                   : #333333;
+    --global-border-color               : #333333;
+    --global-border-prominent           : #444444;
+    --global-code-background-color      : #2a2a2a;
+    --global-code-text-color            : #e0a080;
+    --global-fig-caption-color          : #aaaaaa;
+    --global-link-color                 : #e07850;
+    --global-link-color-hover           : #f09070;
+    --global-link-color-visited         : #e07850;
+    --global-masthead-link-color        : #e8e6dc;
+    --global-masthead-link-color-hover  : #e07850;
+    --global-text-color                 : #e8e6dc;
+    --global-text-color-light           : #999999;
+    --global-thead-color                : #444444;
+    --global-accent                     : #e07850;
+    --global-accent-hover               : #f09070;
+    --global-accent-subtle              : rgba(224, 120, 80, 0.1);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--global-border-prominent);
+    border-radius: 50%;
+    background: var(--global-bg-elevated);
+    color: var(--global-text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: $box-shadow;
+    transition: $global-transition;
+
+    &:hover {
+        border-color: var(--global-accent);
+        background: var(--global-bg-hover);
+    }
+}
