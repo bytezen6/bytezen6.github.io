@@ -1,26 +1,32 @@
 /* ==========================================================================
-   SINGLE PAGE/POST - Mify Style
+   SINGLE PAGE/POST - Academic Homepage Style
    ========================================================================== */
 
 #main {
   @include container;
   @include clearfix;
-  margin-top: 2em;
-  padding-left: clamp(1rem, 3vw, 2rem);
-  padding-right: clamp(1rem, 3vw, 2rem);
-  animation: intro 0.3s both;
-  animation-delay: 0.35s;
+  margin-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
 
   @include breakpoint($x-large) {
     max-width: $x-large;
   }
 }
 
+.homepage-layout {
+  #main {
+    margin-top: 0.2em;
+  }
+}
+
 .page {
+  margin: 0 auto;
+  width: 100%;
+
   @include breakpoint($large) {
     @include span(10 of 12 last);
     @include prefix(0.5 of 12);
-    @include suffix(2 of 12);
   }
 
   .page__inner-wrap {
@@ -36,11 +42,7 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1.2;
-  font-family: $font-display;
-  font-weight: 500;
-  color: var(--global-text-color);
-  letter-spacing: -0.02em;
+  line-height: 1;
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -50,36 +52,42 @@
 .page__lead {
   font-family: $global-font-family;
   font-size: $type-size-4;
-  color: var(--global-text-color-light);
-  line-height: 1.6;
 }
 
 .page__content {
-  h2 {
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid var(--global-border-prominent, #e8e6dc);
-    font-family: $font-display;
-    font-weight: 500;
-    color: var(--global-text-color);
+  .anchor {
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 0;
+      height: 2em;
+      margin-top: -2em;
+    }
   }
 
-  h3, h4, h5, h6 {
-    font-family: $font-display;
-    font-weight: 500;
-    color: var(--global-text-color);
+  h1 {
+    margin-top: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid $border-color;
+    font-size: $type-size-3;
+  }
+
+  h1:first-of-type {
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: $type-size-4;
   }
 
   p, li, dl {
-    font-size: 1em;
-    color: var(--global-text-color);
-    line-height: 1.7;
+    font-size: 1rem;
   }
 
-  /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
 
-    /* sibling indentation*/
     @if $paragraph-indent == true {
       & + p {
         text-indent: $indent-var;
@@ -89,66 +97,144 @@
   }
 
   a {
-    color: var(--global-accent, #c96442);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.15s ease;
+    text-decoration: underline;
 
     &:hover {
-      border-bottom-color: var(--global-accent, #c96442);
-
-      img {
-        box-shadow: 0 4px 20px rgba(20, 20, 19, 0.15);
-      }
+      text-decoration: underline;
     }
   }
 
   dt {
     margin-top: 1em;
     font-family: $sans-serif;
-    font-weight: 600;
-    color: var(--global-text-color);
+    font-weight: bold;
   }
 
   dd {
     margin-left: 1em;
     font-family: $sans-serif;
     font-size: $type-size-6;
-    color: var(--global-text-color-light);
   }
 
   .small {
     font-size: $type-size-6;
   }
+}
 
-  /* blockquote citations */
-  blockquote + .small {
-    margin-top: -1.5em;
-    padding-left: 1.25rem;
+.page--homepage {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  float: none;
+
+  @include breakpoint($large) {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .page__inner-wrap {
+    max-width: $large;
+    margin: 0 auto;
+  }
+
+  .page__content > :first-child {
+    margin-top: 0;
   }
 }
 
-/* Mify-style cards for content sections */
-.content-card {
-  background: var(--global-bg-surface, #faf9f5);
-  border: 1px solid var(--global-border-prominent, #e8e6dc);
-  border-radius: $border-radius;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  transition: all 0.2s ease;
+/* ==========================================================================
+   Hero Banner
+   ========================================================================== */
 
-  &:hover {
-    border-color: var(--global-border-hover, #d1cfc5);
-    box-shadow: 0 4px 12px rgba(20, 20, 19, 0.06);
+.hero-banner {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: 180px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    display: block;
   }
 }
+
+/* ==========================================================================
+   Profile Hero Section - Academic style left-right layout
+   ========================================================================== */
+
+.profile-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5em;
+  margin: 1.5em 0;
+  padding: 0;
+  text-align: left;
+
+  &__photo {
+    flex-shrink: 0;
+
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 0;
+      object-fit: cover;
+      display: block;
+      box-shadow: none;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-family: 'Georgia', 'Times New Roman', 'STKaiti', 'KaiTi', 'SimKai', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--global-text-color);
+    margin: 0 0 0.5em;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  &__meta {
+    font-size: 0.9375rem;
+    color: var(--global-text-color-light);
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+  }
+
+  &__email {
+    font-size: 0.9375rem;
+    color: var(--global-text-color-light);
+    margin-bottom: 0.5em;
+
+    a {
+      color: var(--global-accent);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Page hero
+   ========================================================================== */
 
 .page__hero {
   position: relative;
   margin-bottom: 2em;
   @include clearfix;
-  animation: intro 0.3s both;
-  animation-delay: 0.25s;
 
   &--overlay {
     position: relative;
@@ -158,8 +244,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    animation: intro 0.3s both;
-    animation-delay: 0.25s;
     border-radius: $border-radius;
 
     a {
@@ -189,10 +273,6 @@
 
     .page__title {
       font-size: $type-size-2;
-
-      @include breakpoint($small) {
-        font-size: $type-size-1;
-      }
     }
   }
 }
@@ -218,24 +298,20 @@
   z-index: 5;
   border-radius: $border-radius 0 $border-radius 0;
 
-  @include breakpoint($large) {
-    padding: 6px 12px;
-  }
-
   a {
     color: #fff;
     text-decoration: none;
   }
 }
 
-/*
-   Social sharing - Mify Style
+/* ==========================================================================
+   Social sharing
    ========================================================================== */
 
 .page__share {
   margin-top: 2em;
   padding-top: 1.5em;
-  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-top: 1px solid var(--global-border-color);
 
   @include breakpoint(max-width $small) {
     .btn span {
@@ -259,9 +335,8 @@
   color: var(--global-text-color-light);
 }
 
-
-/*
-   Page meta - Mify Style
+/* ==========================================================================
+   Page meta
    ========================================================================== */
 
 .page__meta {
@@ -279,7 +354,7 @@
     transition: color 0.15s ease;
 
     &:hover {
-      color: var(--global-accent, #c96442);
+      color: var(--global-accent);
     }
   }
 }
@@ -292,9 +367,8 @@
   color: var(--global-text-color-light);
 }
 
-
-/*
-   Page taxonomy - Mify Style
+/* ==========================================================================
+   Page taxonomy
    ========================================================================== */
 
 .page__taxonomy {
@@ -317,22 +391,21 @@
   font-size: $type-size-7;
   font-weight: 500;
   color: var(--global-text-color-light);
-  background: var(--global-bg-surface, #faf9f5);
-  border: 1px solid var(--global-border-prominent, #e8e6dc);
+  background: var(--global-bg-surface);
+  border: 1px solid var(--global-border-color);
   border-radius: 999px;
   transition: all 0.15s ease;
 
   &:hover {
     text-decoration: none;
-    color: var(--global-accent, #c96442);
-    background: var(--global-accent-subtle, rgba(201, 100, 66, 0.1));
-    border-color: var(--global-accent, #c96442);
+    color: var(--global-accent);
+    background: var(--global-accent-subtle);
+    border-color: var(--global-accent);
   }
 }
 
-
-/*
-   Comments - Mify Style
+/* ==========================================================================
+   Comments
    ========================================================================== */
 
 .page__comments {
@@ -344,7 +417,7 @@
   margin-bottom: 10px;
   padding-top: 2rem;
   font-size: $type-size-7;
-  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-top: 1px solid var(--global-border-color);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--global-text-color-light);
@@ -352,8 +425,8 @@
 
 .page__comments-form {
   padding: 1.25em;
-  background: var(--global-bg-surface, #faf9f5);
-  border: 1px solid var(--global-border-prominent, #e8e6dc);
+  background: var(--global-bg-surface);
+  border: 1px solid var(--global-border-color);
   border-radius: $border-radius;
   transition: $global-transition;
 
@@ -375,7 +448,7 @@
   @include clearfix();
   margin: 1em 0;
   padding: 1em;
-  background: var(--global-bg-surface, #faf9f5);
+  background: var(--global-bg-surface);
   border-radius: $border-radius;
 
   &:not(:last-child) {
@@ -388,34 +461,17 @@
   float: left;
   width: 60px;
   height: 60px;
-
-  @include breakpoint($large) {
-    width: 100px;
-    height: 100px;
-  }
 }
 
 .comment__avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
-  @include breakpoint($large) {
-    width: 80px;
-    height: 80px;
-    padding: 0;
-    border: 2px solid var(--global-bg-elevated, #fff);
-    box-shadow: 0 2px 8px rgba(20, 20, 19, 0.08);
-  }
 }
 
 .comment__content-wrapper {
   float: right;
   width: calc(100% - 60px);
-
-  @include breakpoint($large) {
-    width: calc(100% - 100px);
-  }
 }
 
 .comment__author {
@@ -428,7 +484,7 @@
     color: inherit;
 
     &:hover {
-      color: var(--global-accent, #c96442);
+      color: var(--global-accent);
     }
   }
 }
@@ -442,21 +498,18 @@
   }
 }
 
-
-/*
-   Related - Mify Style
+/* ==========================================================================
+   Related
    ========================================================================== */
 
 .page__related {
   margin-top: 2em;
   padding-top: 1.5em;
-  border-top: 1px solid var(--global-border-prominent, #e8e6dc);
+  border-top: 1px solid var(--global-border-color);
   @include clearfix();
-  float: left;
-
-  @include breakpoint($large) {
-    @include pre(2.5 of 12);
-  }
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
 
   a {
     color: inherit;
@@ -464,7 +517,7 @@
     transition: color 0.15s ease;
 
     &:hover {
-      color: var(--global-accent, #c96442);
+      color: var(--global-accent);
     }
   }
 }

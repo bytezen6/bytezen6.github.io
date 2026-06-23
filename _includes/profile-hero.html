@@ -1,0 +1,45 @@
+{% include base_path %}
+
+{% if page.author and site.data.authors[page.author] %}
+  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
+{% endif %}
+
+<div class="profile-hero">
+  <div class="profile-hero__photo">
+    {% if author.avatar %}
+      {% if author.avatar contains "://" %}
+        <img src="{{ author.avatar }}" alt="{{ author.name }}">
+      {% else %}
+        <img src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}">
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="profile-hero__info">
+    <h1 class="profile-hero__name">{{ author.name }}</h1>
+    {% if author.employer or author.location %}
+    <div class="profile-hero__meta">
+      {% if author.employer %}
+        <span>{{ author.employer }}</span>{% if author.location %}<br>{% endif %}
+      {% endif %}
+      {% if author.location %}
+        <span>{{ author.location }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if author.email %}
+    <div class="profile-hero__email">
+      E-mail: <a href="mailto:{{ author.email }}">{{ author.email }}</a>
+    </div>
+    {% endif %}
+    {% if page.bio %}
+    <div class="profile-hero__bio">
+      {{ page.bio | markdownify }}
+    </div>
+    {% endif %}
+    {% if author.googlescholar %}
+    <div class="profile-hero__scholar">
+      You can also find my articles on <a href="{{ author.googlescholar }}">my Google Scholar profile</a>.
+    </div>
+    {% endif %}
+  </div>
+</div>

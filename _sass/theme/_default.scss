@@ -1,47 +1,44 @@
 /* ==========================================================================
-   DEFAULT THEME - Mify Style
+   DEFAULT THEME - Reference Academic Homepage Style
    ========================================================================== */
 
-/* Mify-inspired color palette */
-$bg-base                    : #f5f4ed;
-$bg-surface                 : #faf9f5;
-$bg-elevated                : #fff;
-$bg-hover                   : #f0eee6;
-$accent                     : #c96442;
-$accent-hover               : #b85538;
-$accent-subtle              : rgba(201, 100, 66, 0.1);
-$text-primary               : #141413;
-$text-secondary             : #5e5d59;
-$text-tertiary              : #87867f;
-$border-color               : #f0eee6;
-$border-hover               : #d1cfc5;
-$border-prominent           : #e8e6dc;
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
 
-/* Legacy color codes (keeping for compatibility) */
-$gray                       : #87867f;
-$dark-gray                  : #5e5d59;
-$darker-gray                : #141413;
-$light-gray                 : #a8a7a1;
-$lighter-gray               : #e8e6dc;
+$bg-base                    : #fff;
+$bg-surface                 : #fff;
+$bg-elevated                : #fff;
+$bg-hover                   : #f7f7f7;
+$accent                     : #224b8d;
+$accent-hover               : mix(#000, $accent, 25%);
+$accent-subtle              : rgba(34, 75, 141, 0.08);
+$text-primary               : $dark-gray;
+$text-secondary             : $gray;
+$text-tertiary              : mix(#fff, $gray, 25%);
+$border-color               : $lighter-gray;
+$border-hover               : $light-gray;
+$border-prominent           : $border-color;
 
 /* Color codes used for the site */
 $danger-color               : #ee5f5b;
-$info-color                 : #3d6b9e;
-$notice-color               : #87867f;
+$info-color                 : #224b8d;
+$notice-color               : #7a8288;
 $success-color              : #62c462;
 $warning-color              : #f89406;
 
 /* Other basic settings for the template */
-$border-radius              : 8px;
-$box-shadow                 : 0 1px 3px rgba(20, 20, 19, 0.08);
-$global-transition          : all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-$masthead-height            : 60px;
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 56px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
-$sidebar-link-max-width     : 280px;
+$sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Mify-style light theme for the site */
 :root {
     --global-base-color                 : #{$gray};
     --global-bg-color                   : #{$bg-base};
@@ -51,7 +48,7 @@ $sidebar-screen-min-width   : 1024px;
     --global-border-color               : #{$border-color};
     --global-border-prominent           : #{$border-prominent};
     --global-code-background-color      : #{$bg-surface};
-    --global-code-text-color            : #8b5e48;
+    --global-code-text-color            : #{$darker-gray};
     --global-fig-caption-color          : #{$text-secondary};
     --global-link-color                 : #{$accent};
     --global-link-color-hover           : #{$accent-hover};
@@ -64,55 +61,4 @@ $sidebar-screen-min-width   : 1024px;
     --global-accent                     : #{$accent};
     --global-accent-hover               : #{$accent-hover};
     --global-accent-subtle              : #{$accent-subtle};
-}
-
-/* Dark mode */
-[data-theme="dark"] {
-    --global-base-color                 : #3a3a3a;
-    --global-bg-color                   : #1a1a1a;
-    --global-bg-surface                 : #222222;
-    --global-bg-elevated                : #2a2a2a;
-    --global-bg-hover                   : #333333;
-    --global-border-color               : #333333;
-    --global-border-prominent           : #444444;
-    --global-code-background-color      : #2a2a2a;
-    --global-code-text-color            : #e0a080;
-    --global-fig-caption-color          : #aaaaaa;
-    --global-link-color                 : #e07850;
-    --global-link-color-hover           : #f09070;
-    --global-link-color-visited         : #e07850;
-    --global-masthead-link-color        : #e8e6dc;
-    --global-masthead-link-color-hover  : #e07850;
-    --global-text-color                 : #e8e6dc;
-    --global-text-color-light           : #999999;
-    --global-thead-color                : #444444;
-    --global-accent                     : #e07850;
-    --global-accent-hover               : #f09070;
-    --global-accent-subtle              : rgba(224, 120, 80, 0.1);
-}
-
-/* Theme toggle button */
-.theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 1000;
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--global-border-prominent);
-    border-radius: 50%;
-    background: var(--global-bg-elevated);
-    color: var(--global-text-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    box-shadow: $box-shadow;
-    transition: $global-transition;
-
-    &:hover {
-        border-color: var(--global-accent);
-        background: var(--global-bg-hover);
-    }
 }

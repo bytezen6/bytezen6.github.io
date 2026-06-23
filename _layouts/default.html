@@ -11,14 +11,12 @@ layout: compress
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body class="{% unless page.hide_masthead %}has-masthead{% endunless %}">
 
     {% include browser-upgrade.html %}
-    {% include masthead.html %}
-
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <span id="theme-icon">☀️</span>
-    </button>
+    {% unless page.hide_masthead %}
+      {% include masthead.html %}
+    {% endunless %}
 
     {{ content }}
 

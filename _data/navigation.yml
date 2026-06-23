@@ -4,6 +4,19 @@
 # links. Removing a link prevents it from showing in the header, but does not
 # prevent it from being included in the site.
 
-main: []
-    
+main:
+  - title: "About Me"
+    url: "/#about-me"
 
+  - title: "Research"
+    url: "/#research"
+
+  - title: "Publications"
+    url: "/#selected-publications"
+
+  - title: "All Publications"
+    url: "/#all-publications"
+
+  - title: "Contact"
+    url: "/#contact"
+    

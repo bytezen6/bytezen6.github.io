@@ -7,21 +7,21 @@
    ========================================================================== */
 
 /* Used to set the size for <em> */
-$doc-font-size              : 16;
+$doc-font-size              : 14;
 
 /* Paragraph indention */
 $paragraph-indent           : false; // true, false (default)
-$indent-var                 : 1.3em;
+$indent-var                 : 0.5em;
 
-/* Mify-style typefaces */
-$font-display               : Georgia, "Times New Roman", serif;
-$font-body                  : "Inter", system-ui, -apple-system, sans-serif;
-$font-mono                  : "SF Mono", "Fira Code", "Roboto Mono", Menlo, monospace;
+/* Reference homepage typefaces */
+$font-body                  : "Trebuchet MS", Helvetica, sans-serif;
+$font-display               : $font-body;
+$font-mono                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* System typefaces (legacy) */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : "Inter", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-$monospace                  : "SF Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+$sans-serif                 : "Trebuchet MS", Helvetica, sans-serif;
+$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
@@ -34,18 +34,18 @@ $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 
-/* Type scale - Mify style */
-$type-size-1                : 2.25em;   // ~36px
-$type-size-2                : 1.75em;   // ~28px
-$type-size-3                : 1.375em;  // ~22px
-$type-size-4                : 1.125em;  // ~18px
-$type-size-5                : 1em;      // ~16px
-$type-size-6                : 0.875em;  // ~14px
-$type-size-7                : 0.75em;   // ~12px
-$type-size-8                : 0.625em;  // ~10px
+/* Type scale */
+$type-size-1                : 2.441em;
+$type-size-2                : 1.953em;
+$type-size-3                : 1.4em;
+$type-size-4                : 1.2em;
+$type-size-5                : 1em;
+$type-size-6                : 1em;
+$type-size-7                : 0.6875em;
+$type-size-8                : 0.625em;
 
 $global-font-family         : $font-body;
-$header-font-family         : $font-display;
+$header-font-family         : $sans-serif;
 $caption-font-family        : $serif;
 
 /* ==========================================================================
@@ -64,9 +64,9 @@ $x-large                    : 1280px !default;
    Grid
    ========================================================================== */
 
-$right-sidebar-width-narrow : 20px !default;
-$right-sidebar-width        : 30px !default;
-$right-sidebar-width-wide   : 40px !default;
+$right-sidebar-width-narrow : 0px !default;
+$right-sidebar-width        : 0px !default;
+$right-sidebar-width-wide   : 0px !default;
 
 $susy: (
     columns: 12,

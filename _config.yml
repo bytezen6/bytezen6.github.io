@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Sibo Lu / Personal Homepage"
+title                    : "Sibo Lu"
 title_separator          : "-"
 name                     : &name "Sibo Lu"
 description              : &description "a third year graduate student from Beijing Jiaotong University"
@@ -87,6 +87,7 @@ publication_category:
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
+show_sidebar             : false
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts

@@ -1,0 +1,39 @@
+{% include base_path %}
+
+{% assign post = include.post %}
+{% assign publication_authors = post.authors | default: "" %}
+{% if publication_authors == "" and post.citation %}
+  {% assign publication_authors = post.citation | split: '. (' | first %}
+{% endif %}
+
+<div class="paper-box">
+  <div class="paper-box-image">
+    {% if post.header.teaser %}
+      <img src=
+        {% if post.header.teaser contains "://" %}
+          "{{ post.header.teaser }}"
+        {% else %}
+          "{{ post.header.teaser | prepend: '/images/' | prepend: base_path }}"
+        {% endif %}
+        alt="{{ post.title }}">
+    {% else %}
+      <div class="paper-box-placeholder" aria-hidden="true">
+        <span class="badge">{{ post.date | default: "1900-01-01" | date: "%Y" }}</span>
+        <div class="paper-box-placeholder__label">{{ post.venue }}</div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="paper-box-text">
+    <a class="paper-box-title" href="{% if post.paperurl %}{{ post.paperurl }}{% else %}{{ base_path }}{{ post.url }}{% endif %}"{% if post.paperurl %} target="_blank" rel="noopener"{% endif %}>{{ post.title }}</a>
+    {% if publication_authors != "" %}
+      <p class="paper-box-authors">{{ publication_authors }}</p>
+    {% endif %}
+    <p class="paper-box-venue">{{ post.venue }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+    <p class="paper-box-links">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener">Paper</a>
+      {% endif %}
+      <a href="{{ base_path }}{{ post.url }}">Details</a>
+    </p>
+  </div>
+</div>
