@@ -39,6 +39,18 @@ $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
+/* Compatibility aliases for reference academic-homepage Sass */
+$body-color                 : $bg-base;
+$background-color           : $bg-base;
+$code-background-color      : $bg-surface;
+$text-color                 : $text-primary;
+$primary-color              : $gray;
+$link-color                 : $accent;
+$link-color-hover           : $accent-hover;
+$link-color-visited         : $accent;
+$masthead-link-color        : $text-primary;
+$masthead-link-color-hover  : $accent;
+
 :root {
     --global-base-color                 : #{$gray};
     --global-bg-color                   : #{$bg-base};
