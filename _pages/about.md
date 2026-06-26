@@ -12,7 +12,7 @@ redirect_from:
 
 <div class="anchor" id="about-me"></div>
 
-I am a research developer with a passion for recommendation and search in industry. My recent work focuses on recommendation debiasing, disentangled representation learning, causal modeling, and cross-domain learning.
+I am a research developer with a passion for recommendation and search in industry. My recent work focuses on generative recommendation, agentic models, and multi-modal large foundation models.
 
 This homepage gives a concise overview of my research interests and recent publications. You can browse selected papers below, or visit [Google Scholar]({{ site.author.googlescholar }}) for a fuller publication record.
 
@@ -21,9 +21,10 @@ This homepage gives a concise overview of my research interests and recent publi
 # 🔬 Research Interests
 
 - Recommendation systems and search
-- Debiasing recommendation with uniform or simulated uniform data
-- Disentangled and causal representation learning
-- Sequential and cross-domain recommendation
+  - Generative Recommendation
+- Large Foundation Model
+  - Agentic Model
+  - Multi-Modal
 
 <div class="anchor" id="selected-publications"></div>
 
